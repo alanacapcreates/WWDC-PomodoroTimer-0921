@@ -12,7 +12,8 @@ const contBtn = document.getElementById("continue-btn")
 
 let timeStart = 0;
 let timer;
-let time;
+let time =0;
+let dateFormat;
 let run = false;
 
 
@@ -46,7 +47,7 @@ shortBreakBtn.addEventListener("click", () => {
 longBreakBtn.addEventListener("click", () => {
     clearInterval(timer);
     let date = new Date();
-    let dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
+    dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
     timeStart = 15;
     time = timeStart * 60;
     run = true;
@@ -72,16 +73,35 @@ function update() {
 }
 
 pauseBtn.addEventListener('click',() => {
-    clearInterval(timer);
+    if (time ===0) {alert("There's no time on the clock!");return;}
+    else{
+        let date = new Date();
+        dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
+        logEl.innerHTML += `<h4>Timer Paused ,</h4> ${dateFormat}</br>`
+        clearInterval(timer);
+    }
 })
 
 
 contBtn.addEventListener('click',() => {
-    clearInterval(timer);
-    timer = setInterval(update, 1000);
+    if (time ===0) {alert("You can't continue a timer you never set!");return;}
+    else{
+        let date = new Date();
+        dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
+        logEl.innerHTML += `<h4>Timer Resumed ,</h4> ${dateFormat}</br>`
+        clearInterval(timer);
+        timer = setInterval(update, 1000);
+    }
 })
 stopBtn.addEventListener('click',() => {
-    clearInterval(timer);
-    timeDisplay.innerHTML = `0:00`;
-    console.log(time)
+    if (time ===0) {alert("The timer has been cleared");return;}
+    else{
+        let date = new Date();
+        dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
+        clearInterval(timer);
+        time = 0;
+        timeDisplay.innerHTML = `0:00`;
+        // console.log(time)
+        logEl.innerHTML += `<h4>Timer Stopped ,</h4> ${dateFormat}</br>`
+    }
 })
