@@ -1,0 +1,58 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+.container,
+.button-container,
+.timer {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    background-color: #C7A0FF;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.timer,
+button {
+    margin: 0.5em;
+    border-radius: 20px;
+}
+
+.timer {
+    height: 8em;
+    width: 20em;
+    background-color: white;
+    box-shadow: 2px 2px 8px #444;
+    align-items: center;
+    padding: 1em;
+}
+
+.timer p {
+    font-size: 75px;
+}
+.log{
+    width: 50%;
+    height: 8em;
+    border: 1px solid #000;
+    overflow-y: scroll;
+}
+#log h4, #log p{
+    display: inline-block;
+}
+button {
+    width: 100px;
+    border: none;
+    border-radius: 5px;
+    padding: 0.25em 0.5em;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+button:hover {
+    cursor: pointer;
+    background: lightgray;
+}
