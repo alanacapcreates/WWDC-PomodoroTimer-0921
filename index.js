@@ -20,6 +20,7 @@ let run = false;
 // console.log(dateFormat);
 // 💻 Work: 25 mins
 workBtn.addEventListener("click", () => {
+    clearInterval(timer);
     let date = new Date();
     let dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
     timeStart = 25;
@@ -31,6 +32,7 @@ workBtn.addEventListener("click", () => {
 
 // ☕️ Short break: 5 mins
 shortBreakBtn.addEventListener("click", () => {
+    clearInterval(timer);
     let date = new Date();
     let dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
     timeStart = 5;
@@ -42,6 +44,7 @@ shortBreakBtn.addEventListener("click", () => {
 
 // 🌯 Long break: 15 mins
 longBreakBtn.addEventListener("click", () => {
+    clearInterval(timer);
     let date = new Date();
     let dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
     timeStart = 15;
