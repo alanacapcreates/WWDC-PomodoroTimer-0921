@@ -2,6 +2,9 @@ html, body {
     margin: 0;
     padding: 0;
 }
+h3{
+    color: #fff;
+}
 button {
     /* width: 10em;
     height: 3em; */
@@ -35,7 +38,10 @@ button:hover {
 }
 
 .container {
-    background-color: #C7A0FF;
+    background: rgb(28,34,107);
+    /* Gradient courtesy of https://gradienta.io/fearless-hue */
+    background: linear-gradient(123deg, #FFFFFF 0%, #00B2FF 100%), linear-gradient(236deg, #BAFF99 0%, #005E64 100%), linear-gradient(180deg, #FFFFFF 0%, #002A5A 100%), linear-gradient(225deg, #0094FF 20%, #BFF4ED 45%, #280F34 45%, #280F34 70%, #FF004E 70%, #E41655 85%, #B30753 85%, #B30753 100%), linear-gradient(135deg, #0E0220 15%, #0E0220 35%, #E40475 35%, #E40475 60%, #48E0E4 60%, #48E0E4 68%, #D7FBF6 68%, #D7FBF6 100%);
+background-blend-mode: overlay, overlay, overlay, darken, normal;
     flex-direction: column;
     align-items: center;
     height: 100vh;
@@ -50,10 +56,25 @@ button {
 .timer {
     height: 8em;
     width: 20em;
-    background-color: white;
-    box-shadow: 2px 2px 8px #444;
+    /* background-color: white; */
+    color: rgb(255, 255, 255);;
+    
     align-items: center;
     padding: 1em;
+
+}
+.box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 3rem;
+    width: 50vw;
+    backdrop-filter: blur(15px);
+    background-color: rgba(255, 255, 255, 0.274);
+    box-shadow: -3px -2px 6px rgba(255, 255, 255, 0.623), 3px 5px 6px rgba(34, 34, 34, 0.411);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius:20px;
 }
 
 .timer p {
@@ -62,7 +83,7 @@ button {
 .log{
     width: 50%;
     height: 8em;
-    border: 1px solid #000;
+    border: 1px solid #fff;
     overflow-y: scroll;
 }
 #log h4, #log p{
