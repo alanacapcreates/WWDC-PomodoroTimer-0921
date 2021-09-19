@@ -2,6 +2,9 @@ html, body {
     margin: 0;
     padding: 0;
 }
+body{
+    font-family: 'Roboto Mono', monospace;
+}
 h3{
     color: #fff;
 }
@@ -56,9 +59,7 @@ button {
 .timer {
     height: 8em;
     width: 20em;
-    /* background-color: white; */
     color: rgb(255, 255, 255);;
-    
     align-items: center;
     padding: 1em;
 
@@ -81,7 +82,7 @@ button {
     font-size: 75px;
 }
 .log{
-    width: 50%;
+    width: 75%;
     height: 8em;
     border: 1px solid #fff;
     overflow-y: scroll;
