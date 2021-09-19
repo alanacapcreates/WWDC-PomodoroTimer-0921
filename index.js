@@ -10,17 +10,23 @@ const pauseBtn = document.getElementById("pause-btn")
 const stopBtn = document.getElementById("stop-btn")
 const contBtn = document.getElementById("continue-btn")
 
+contBtn.disabled = true;
+pauseBtn.disabled = true;
+stopBtn.disabled = true;
+
 let timeStart = 0;
 let timer;
-let time =0;
+let time = 0;
 let dateFormat;
 let run = false;
 
+let arr = [];
 
-
-// console.log(dateFormat);
 // 💻 Work: 25 mins
 workBtn.addEventListener("click", () => {
+    contBtn.disabled = false;
+    pauseBtn.disabled = false;
+    stopBtn.disabled = false;
     clearInterval(timer);
     let date = new Date();
     let dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
@@ -28,11 +34,16 @@ workBtn.addEventListener("click", () => {
     time = timeStart * 60;
     run = true;
     timer = setInterval(update, 1000);
-    logEl.innerHTML += `<h4>Work ,</h4> ${dateFormat}</br>`
+    arr.unshift(`<h4>Work,</h4> ${dateFormat}`)
+    logEl.innerHTML = arr
+    // logEl.innerHTML += `<h4>Work ,</h4> ${dateFormat}</br>`
 });
 
 // ☕️ Short break: 5 mins
 shortBreakBtn.addEventListener("click", () => {
+    contBtn.disabled = false;
+    pauseBtn.disabled = false;
+    stopBtn.disabled = false;
     clearInterval(timer);
     let date = new Date();
     let dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
@@ -40,11 +51,16 @@ shortBreakBtn.addEventListener("click", () => {
     time = timeStart * 60;
     run = true;
     timer = setInterval(update, 1000);
-    logEl.innerHTML += `<h4>Short Break ,</h4> ${dateFormat}</br>`
+    arr.unshift(`<h4>Short Break,</h4> ${dateFormat}`)
+    // logEl.innerHTML += `<h4>Short Break ,</h4> ${dateFormat}</br>`
+    logEl.innerHTML = arr
 });
-
+console.log(arr)
 // 🌯 Long break: 15 mins
 longBreakBtn.addEventListener("click", () => {
+    contBtn.disabled = false;
+    pauseBtn.disabled = false;
+    stopBtn.disabled = false;
     clearInterval(timer);
     let date = new Date();
     dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
@@ -52,7 +68,9 @@ longBreakBtn.addEventListener("click", () => {
     time = timeStart * 60;
     run = true;
     timer = setInterval(update, 1000);
-    logEl.innerHTML += `<h4>Long Break ,</h4> ${dateFormat}</br>`    
+    // logEl.innerHTML += `<h4>Long Break ,</h4> ${dateFormat}</br>`  
+    arr.unshift(`<h4>Long Break,</h4> ${dateFormat}`)
+    logEl.innerHTML = arr  
 });
 
 
@@ -69,15 +87,21 @@ function update() {
         run = false;
     } else {
         time--;
+        
     }
 }
 
 pauseBtn.addEventListener('click',() => {
-    if (time ===0) {alert("There's no time on the clock!");return;}
+    if (time === 0) {
+        alert("There's no time on the clock!");return;
+    }
     else{
+        // contBtn.disabled = false;
         let date = new Date();
         dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
-        logEl.innerHTML += `<h4>Timer Paused ,</h4> ${dateFormat}</br>`
+        // logEl.innerHTML += `<h4>Timer Paused ,</h4> ${dateFormat}</br>`
+        arr.unshift(`<h4>Timer Paused,</h4> ${dateFormat}`)
+        logEl.innerHTML = arr
         clearInterval(timer);
     }
 })
@@ -88,7 +112,9 @@ contBtn.addEventListener('click',() => {
     else{
         let date = new Date();
         dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
-        logEl.innerHTML += `<h4>Timer Resumed ,</h4> ${dateFormat}</br>`
+        arr.unshift(`<h4>Timer Resumed,</h4> ${dateFormat}`)
+        logEl.innerHTML = arr
+        // logEl.innerHTML += `<h4>Timer Resumed ,</h4> ${dateFormat}</br>`
         clearInterval(timer);
         timer = setInterval(update, 1000);
     }
@@ -96,12 +122,16 @@ contBtn.addEventListener('click',() => {
 stopBtn.addEventListener('click',() => {
     if (time ===0) {alert("The timer has been cleared");return;}
     else{
+        contBtn.disabled = true;
+        pauseBtn.disabled = true;
         let date = new Date();
         dateFormat = date.toLocaleString('en-US', {month: 'numeric', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
         clearInterval(timer);
         time = 0;
         timeDisplay.innerHTML = `0:00`;
         // console.log(time)
-        logEl.innerHTML += `<h4>Timer Stopped ,</h4> ${dateFormat}</br>`
+        arr.unshift(`<h4>Timer Stopped,</h4> ${dateFormat}`)
+        logEl.innerHTML = arr
+        // logEl.innerHTML += `<h4>Timer Stopped ,</h4> ${dateFormat}</br>`
     }
 })
