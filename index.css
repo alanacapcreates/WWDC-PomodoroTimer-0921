@@ -5,12 +5,13 @@ html, body {
 body{
     font-family: 'Roboto Mono', monospace;
 }
+h1{
+    font-size: 48px;
+}
 h3{
     color: #fff;
 }
 button {
-    /* width: 10em;
-    height: 3em; */
     padding: 0.5em 1.25em;
     font-size: 24px;
     border: none;
@@ -50,19 +51,22 @@ background-blend-mode: overlay, overlay, overlay, darken, normal;
     height: 100vh;
 }
 
-.timer,
+
 button {
     margin: 0.5em;
     border-radius: 20px;
 }
 
 .timer {
-    height: 8em;
-    width: 20em;
+    /* height: 8em; */
+    /* width: 20em; */
     color: rgb(255, 255, 255);;
     align-items: center;
-    padding: 1em;
-
+    /* padding: 1em; */
+    flex-direction: column;
+}
+.timer p{
+    display: block;
 }
 .box{
     display: flex;
@@ -79,7 +83,9 @@ button {
 }
 
 .timer p {
-    font-size: 75px;
+    /* font-size: 75px; */
+    margin:0;
+    margin-bottom: 5em;
 }
 .log{
     width: 75%;
